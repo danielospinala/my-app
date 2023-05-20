@@ -1,0 +1,11 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(183, 218, 255);
+}
+.list{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+}

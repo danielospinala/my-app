@@ -1,20 +1,13 @@
 import Link from "next/link"
 import Image from "next/image"
-import styles from './NavMenu.module.css';
+import styles from './Footer.module.css';
 
 
 export default function Footer() {
 
     return (
-        <div className={styles.navbar}>
-            <Link href={'/'}>
-                <Image
-                    src="/Logo_TV_2015.svg"
-                    width={100}
-                    height={109}
-                    alt="Logo"
-                />
-            </Link>
+        <div className={styles.footer}>
+            <div>
             <ul className={styles.list}>
                 <li>
 
@@ -29,9 +22,14 @@ export default function Footer() {
 
             </ul>
 
+            </div>
+            <div>
 
-
-
+            </div>
+            <div>
+                
+            </div>
+         
         </div>
     )
 }

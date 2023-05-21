@@ -80,8 +80,10 @@ const posts = [
     }
   ];
 
+  // export function GET(){
+  //   return NextResponse.json(posts);
+  // }
   export function GET(){
-    return NextResponse.json(posts);
+    return new Response(JSON.stringify(posts));
   }
-  
   

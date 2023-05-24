@@ -7,7 +7,19 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 
 function NavMenu() {
+
     const isUserLoggedIn = false;
+    const [providers, setProviders] = useState(null);
+
+    useEffect(() => {
+        const setProviders = async () => {
+            const response = await getProviders();
+
+            setProviders(response)
+        }
+        setProviders();
+    }, [])
+
 
     return (
         <nav className={styles.navbar}>
@@ -24,9 +36,9 @@ function NavMenu() {
                     (
 
                         <div>
-                            <Link href={'/'}>
-                                <button> logout</button>
-                            </Link>
+
+                            <button onClick={()=>signOut()}> SignOut</button>
+
 
                             <Image
                                 src="/Logo_TV_2015.svg"
@@ -38,6 +50,19 @@ function NavMenu() {
                         </div>
                     ) :
                     (<>
+                        {providers &&
+                            Object.values(providers)
+                                .map((provider) => (
+                                    <button
+                                        type="button"
+                                        key={provider.name}
+                                        onClick={() => signIn(provider.id)}
+                                    >
+                                        SignIn
+                                    </button>
+                                ))
+
+                        }
                         <ul className={styles.list}>
 
                             <li>
@@ -47,19 +72,8 @@ function NavMenu() {
                                 <Link href={'/contact'}>Contact</Link>
 
                             </li>
-                            <li>
-
-                            </li>
-                            <li>
-                                <Link href={'/login'}>
-                                    <button> Login</button>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={'/login'}>
-                                    <button> SignUp</button>
-                                </Link>
-                            </li>
+                            
+                           
 
                         </ul>
                     </>)}

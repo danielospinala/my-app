@@ -10,8 +10,17 @@ export const connectToDB = async ()=>{
         return;
     }
     try{
+        const db = await mongoose.connect(process.env.MONGODB_URI, {
+            dbName:"roommateUsers",
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            // useFindAndModify: false,
+            // useCreateIndex: true,
+          });
+          isConnected = true;
+          console.log('MongoDB is connected')
 
     }catch(error){
-
+        console.log(error)
     }
 }

@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import User from '../../../../models/user'
+import {connectToDB} from "../../../../utils/database"
 
 console.log({
     clientId:process.env.GOOGLE_ID,
@@ -17,6 +19,16 @@ const handler = NextAuth({
 
     },
     async signIn({profile}){
+        try{
+            await connectToDB();
+            
+
+            return true;
+
+
+        }catch(error){
+            console.log("Error!!!####",error)
+        }
 
     }
 })

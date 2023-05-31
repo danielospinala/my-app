@@ -7,11 +7,15 @@ export const metadata = {
 }
 
 export default async function Home({params}) {
+  const isUserLoggedIn = false;
 
   return (
     <main className={styles.main}>
-      
-      <h1>Main Page</h1>
+      <div>
+      {isUserLoggedIn ? ( <div>LogOut</div> ):( <div>LogIn</div>)}
+       
+        <h1>Main Page</h1>
+        </div>
 
     </main>
   )

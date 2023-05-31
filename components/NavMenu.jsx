@@ -8,7 +8,7 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 function NavMenu() {
 
-    const isUserLoggedIn = false;
+    const isUserLoggedIn = true;
     const [providers, setProviders] = useState(null);
 
     useEffect(() => {
